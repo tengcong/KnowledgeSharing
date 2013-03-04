@@ -1,0 +1,1116 @@
+Connecting to database specified by database.yml
+  [1m[36m (172.2ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (334.4ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to DeviseCreateUsers (20130304083922)
+  [1m[35m (179.6ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (423.0ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (367.6ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36m (155.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130304083922')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 22:56:05 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (5.7ms)
+Compiled twitter/bootstrap.css  (2334ms)  (pid 8984)
+Compiled main.css  (2ms)  (pid 8984)
+Compiled application.css  (2353ms)  (pid 8984)
+Compiled jquery.js  (42ms)  (pid 8984)
+Compiled jquery_ujs.js  (0ms)  (pid 8984)
+Compiled angular.js  (8ms)  (pid 8984)
+Compiled main.js  (562ms)  (pid 8984)
+Compiled twitter/bootstrap/dropdown.js  (0ms)  (pid 8984)
+Compiled application.js  (788ms)  (pid 8984)
+Completed 200 OK in 3409ms (Views: 3408.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2013-03-04 22:57:46 +0800
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (1.6ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (66.7ms)
+Completed 200 OK in 223ms (Views: 75.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2013-03-04 22:57:50 +0800
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (0.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-03-04 22:58:02 +0800
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yPLhe2SFzvAaPbFRIkQQbyrAVPcunV9KAflB2ooiV0o=", "user"=>{"email"=>"congteng45@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'congteng45@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `users` (`created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `encrypted_password`, `last_sign_in_at`, `last_sign_in_ip`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `sign_in_count`, `updated_at`) VALUES ('2013-03-04 14:58:02', NULL, NULL, 'congteng45@gmail.com', '$2a$10$Ts5Z5cD7YArAcjqcpvuzj.KZTk8.kLlaJHtjPL4DEEdSQvuPbXm3.', NULL, NULL, NULL, NULL, NULL, 0, '2013-03-04 14:58:02')[0m
+  [1m[35m (128.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2013-03-04 14:58:02', `current_sign_in_at` = '2013-03-04 14:58:02', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2013-03-04 14:58:02' WHERE `users`.`id` = 1
+  [1m[36m (106.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 538ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 22:58:02 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 60ms (Views: 59.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:06:31 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 10.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:07:32 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.8ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:08:29 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.0ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (3ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 97ms (Views: 96.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:08:54 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (2ms)  (pid 8984)
+Compiled application.css  (3ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 75ms (Views: 74.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:10:15 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.9ms)
+Compiled main.css  (1ms)  (pid 8984)
+Compiled application.css  (3ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 73ms (Views: 73.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:13:20 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 13ms
+
+Sprockets::FileNotFound - couldn't find file 'app_boostrap'
+  (in /home/marshall/rails-work-space/KnowledgeSharing/app/assets/stylesheets/application.css:11):
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:102:in `resolve'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:142:in `require_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/directive_processor.rb:215:in `process_require_directive'
+  (gem) sprockets-2.2.2/lib/sprockets/directive_processor.rb:165:in `block in process_directives'
+  (gem) sprockets-2.2.2/lib/sprockets/directive_processor.rb:163:in `each'
+  (gem) sprockets-2.2.2/lib/sprockets/directive_processor.rb:163:in `process_directives'
+  (gem) sprockets-2.2.2/lib/sprockets/directive_processor.rb:97:in `evaluate'
+  (gem) tilt-1.3.4/lib/tilt/template.rb:77:in `render'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:193:in `block in evaluate'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:190:in `each'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:190:in `evaluate'
+  (gem) sprockets-2.2.2/lib/sprockets/processed_asset.rb:12:in `initialize'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:249:in `new'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:249:in `block in build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:270:in `circular_call_protection'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:248:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:93:in `block in build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/caching.rb:19:in `cache_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:92:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:169:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:60:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/bundled_asset.rb:38:in `init_with'
+  (gem) sprockets-2.2.2/lib/sprockets/asset.rb:24:in `from_hash'
+  (gem) sprockets-2.2.2/lib/sprockets/caching.rb:15:in `cache_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:92:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:169:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:60:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/environment.rb:78:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:177:in `[]'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:126:in `asset_for'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:44:in `block in stylesheet_link_tag'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:43:in `collect'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:43:in `stylesheet_link_tag'
+  app/views/layouts/application.html.haml:5:in `_app_views_layouts_application_html_haml___2072497836564197820_43008440'
+  (gem) actionpack-3.2.12/lib/action_view/template.rb:145:in `block in render'
+  (gem) activesupport-3.2.12/lib/active_support/notifications.rb:125:in `instrument'
+  (gem) actionpack-3.2.12/lib/action_view/template.rb:143:in `render'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:18:in `render'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/renderer.rb:36:in `render_template'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/renderer.rb:17:in `render'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:110:in `_render_template'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:88:in `render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rendering.rb:16:in `render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  (gem) activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/marshall/.rvm/rubies/ruby-1.9.2-p318/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  (gem) activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  (gem) activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:39:in `render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  (gem) actionpack-3.2.12/lib/abstract_controller/base.rb:167:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rendering.rb:10:in `process_action'
+  (gem) actionpack-3.2.12/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__3252636882775955359__process_action__2061233123516563264__callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  (gem) actionpack-3.2.12/lib/abstract_controller/callbacks.rb:17:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rescue.rb:29:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  (gem) activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+  (gem) activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  (gem) activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  (gem) activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  (gem) actionpack-3.2.12/lib/abstract_controller/base.rb:121:in `process'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:45:in `process'
+  (gem) actionpack-3.2.12/lib/action_controller/metal.rb:203:in `dispatch'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  (gem) actionpack-3.2.12/lib/action_controller/metal.rb:246:in `block in action'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:36:in `call'
+  (gem) journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+  (gem) journey-1.0.4/lib/journey/router.rb:56:in `each'
+  (gem) journey-1.0.4/lib/journey/router.rb:56:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:601:in `call'
+  (gem) warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  (gem) warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  (gem) warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  (gem) rack-1.4.5/lib/rack/etag.rb:23:in `call'
+  (gem) rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/head.rb:14:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  (gem) rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+  (gem) rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  (gem) activerecord-3.2.12/lib/active_record/query_cache.rb:64:in `call'
+  (gem) activerecord-3.2.12/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `_run__200631843794360008__call__500305732993842545__callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  (gem) better_errors-0.7.0/lib/better_errors/middleware.rb:84:in `protected_app_call'
+  (gem) better_errors-0.7.0/lib/better_errors/middleware.rb:79:in `better_errors_call'
+  (gem) better_errors-0.7.0/lib/better_errors/middleware.rb:56:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  (gem) railties-3.2.12/lib/rails/rack/logger.rb:32:in `call_app'
+  (gem) railties-3.2.12/lib/rails/rack/logger.rb:16:in `block in call'
+  (gem) activesupport-3.2.12/lib/active_support/tagged_logging.rb:22:in `tagged'
+  (gem) railties-3.2.12/lib/rails/rack/logger.rb:16:in `call'
+  (gem) quiet_assets-1.0.2/lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  (gem) rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+  (gem) rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+  (gem) activesupport-3.2.12/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  (gem) rack-1.4.5/lib/rack/lock.rb:15:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/static.rb:62:in `call'
+  (gem) railties-3.2.12/lib/rails/engine.rb:479:in `call'
+  (gem) railties-3.2.12/lib/rails/application.rb:223:in `call'
+  (gem) rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+  (gem) railties-3.2.12/lib/rails/rack/log_tailer.rb:17:in `call'
+  (gem) thin-1.5.0/lib/thin/connection.rb:81:in `block in pre_process'
+  (gem) thin-1.5.0/lib/thin/connection.rb:79:in `catch'
+  (gem) thin-1.5.0/lib/thin/connection.rb:79:in `pre_process'
+  (gem) thin-1.5.0/lib/thin/connection.rb:54:in `process'
+  (gem) thin-1.5.0/lib/thin/connection.rb:39:in `receive_data'
+  (gem) eventmachine-1.0.1/lib/eventmachine.rb:187:in `run_machine'
+  (gem) eventmachine-1.0.1/lib/eventmachine.rb:187:in `run'
+  (gem) thin-1.5.0/lib/thin/backends/base.rb:63:in `start'
+  (gem) thin-1.5.0/lib/thin/server.rb:159:in `start'
+  (gem) rack-1.4.5/lib/rack/handler/thin.rb:13:in `run'
+  (gem) rack-1.4.5/lib/rack/server.rb:268:in `start'
+  (gem) railties-3.2.12/lib/rails/commands/server.rb:70:in `start'
+  (gem) railties-3.2.12/lib/rails/commands.rb:55:in `block in <top (required)>'
+  (gem) railties-3.2.12/lib/rails/commands.rb:50:in `tap'
+  (gem) railties-3.2.12/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/51494500/variables" for 127.0.0.1 at 2013-03-04 23:13:21 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:13:43 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled app_bootstrap.css  (1207ms)  (pid 8984)
+Compiled application.css  (1278ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 1308ms (Views: 1307.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:16:44 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 16ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:16:54 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:17:00 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 10.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2013-03-04 23:17:07 +0800
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered devise/registrations/edit.html.haml within layouts/application (8.3ms)
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:17:37 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:17:58 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:18:49 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 15ms (Views: 15.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:25:11 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.7ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 84ms (Views: 83.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:26:15 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:26:57 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 12ms
+
+Sass::SyntaxError - Invalid CSS after "}": expected selector or at-rule, was "}"
+  (in /home/marshall/rails-work-space/KnowledgeSharing/app/assets/stylesheets/main.css.scss):
+  app/assets/stylesheets/main.css.scss:10:in `'
+  (gem) sass-3.2.6/lib/sass/scss/parser.rb:1148:in `expected'
+  (gem) sass-3.2.6/lib/sass/scss/parser.rb:1084:in `expected'
+  (gem) sass-3.2.6/lib/sass/scss/parser.rb:28:in `parse'
+  (gem) sass-3.2.6/lib/sass/engine.rb:342:in `_to_tree'
+  (gem) sass-3.2.6/lib/sass/engine.rb:315:in `_render'
+  (gem) sass-3.2.6/lib/sass/engine.rb:262:in `render'
+  (gem) sass-rails-3.2.6/lib/sass/rails/template_handlers.rb:106:in `evaluate'
+  (gem) tilt-1.3.4/lib/tilt/template.rb:77:in `render'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:193:in `block in evaluate'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:190:in `each'
+  (gem) sprockets-2.2.2/lib/sprockets/context.rb:190:in `evaluate'
+  (gem) sprockets-2.2.2/lib/sprockets/processed_asset.rb:12:in `initialize'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:249:in `new'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:249:in `block in build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:270:in `circular_call_protection'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:248:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:93:in `block in build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/caching.rb:19:in `cache_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:92:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:169:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:60:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/processed_asset.rb:44:in `block in init_with'
+  (gem) sprockets-2.2.2/lib/sprockets/processed_asset.rb:37:in `map'
+  (gem) sprockets-2.2.2/lib/sprockets/processed_asset.rb:37:in `init_with'
+  (gem) sprockets-2.2.2/lib/sprockets/asset.rb:24:in `from_hash'
+  (gem) sprockets-2.2.2/lib/sprockets/caching.rb:15:in `cache_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:92:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:169:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:60:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/bundled_asset.rb:38:in `init_with'
+  (gem) sprockets-2.2.2/lib/sprockets/asset.rb:24:in `from_hash'
+  (gem) sprockets-2.2.2/lib/sprockets/caching.rb:15:in `cache_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:92:in `build_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:169:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/index.rb:60:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/environment.rb:78:in `find_asset'
+  (gem) sprockets-2.2.2/lib/sprockets/base.rb:177:in `[]'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:126:in `asset_for'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:44:in `block in stylesheet_link_tag'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:43:in `collect'
+  (gem) actionpack-3.2.12/lib/sprockets/helpers/rails_helper.rb:43:in `stylesheet_link_tag'
+  app/views/layouts/application.html.haml:5:in `_app_views_layouts_application_html_haml___2072497836564197820_51653300'
+  (gem) actionpack-3.2.12/lib/action_view/template.rb:145:in `block in render'
+  (gem) activesupport-3.2.12/lib/active_support/notifications.rb:125:in `instrument'
+  (gem) actionpack-3.2.12/lib/action_view/template.rb:143:in `render'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/template_renderer.rb:18:in `render'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/renderer.rb:36:in `render_template'
+  (gem) actionpack-3.2.12/lib/action_view/renderer/renderer.rb:17:in `render'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:110:in `_render_template'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:88:in `render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rendering.rb:16:in `render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block (2 levels) in render'
+  (gem) activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `block in ms'
+  /home/marshall/.rvm/rubies/ruby-1.9.2-p318/lib/ruby/1.9.1/benchmark.rb:310:in `realtime'
+  (gem) activesupport-3.2.12/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:40:in `block in render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+  (gem) activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:39:in `render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  (gem) actionpack-3.2.12/lib/abstract_controller/base.rb:167:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rendering.rb:10:in `process_action'
+  (gem) actionpack-3.2.12/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:414:in `_run__3252636882775955359__process_action__2061233123516563264__callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  (gem) actionpack-3.2.12/lib/abstract_controller/callbacks.rb:17:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rescue.rb:29:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  (gem) activesupport-3.2.12/lib/active_support/notifications.rb:123:in `block in instrument'
+  (gem) activesupport-3.2.12/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  (gem) activesupport-3.2.12/lib/active_support/notifications.rb:123:in `instrument'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  (gem) activerecord-3.2.12/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  (gem) actionpack-3.2.12/lib/abstract_controller/base.rb:121:in `process'
+  (gem) actionpack-3.2.12/lib/abstract_controller/rendering.rb:45:in `process'
+  (gem) actionpack-3.2.12/lib/action_controller/metal.rb:203:in `dispatch'
+  (gem) actionpack-3.2.12/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  (gem) actionpack-3.2.12/lib/action_controller/metal.rb:246:in `block in action'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:36:in `call'
+  (gem) journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+  (gem) journey-1.0.4/lib/journey/router.rb:56:in `each'
+  (gem) journey-1.0.4/lib/journey/router.rb:56:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/routing/route_set.rb:601:in `call'
+  (gem) warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  (gem) warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  (gem) warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  (gem) rack-1.4.5/lib/rack/etag.rb:23:in `call'
+  (gem) rack-1.4.5/lib/rack/conditionalget.rb:25:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/head.rb:14:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  (gem) rack-1.4.5/lib/rack/session/abstract/id.rb:210:in `context'
+  (gem) rack-1.4.5/lib/rack/session/abstract/id.rb:205:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  (gem) activerecord-3.2.12/lib/active_record/query_cache.rb:64:in `call'
+  (gem) activerecord-3.2.12/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `_run__200631843794360008__call__500305732993842545__callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:405:in `__run_callback'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  (gem) activesupport-3.2.12/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  (gem) better_errors-0.7.0/lib/better_errors/middleware.rb:84:in `protected_app_call'
+  (gem) better_errors-0.7.0/lib/better_errors/middleware.rb:79:in `better_errors_call'
+  (gem) better_errors-0.7.0/lib/better_errors/middleware.rb:56:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  (gem) railties-3.2.12/lib/rails/rack/logger.rb:32:in `call_app'
+  (gem) railties-3.2.12/lib/rails/rack/logger.rb:16:in `block in call'
+  (gem) activesupport-3.2.12/lib/active_support/tagged_logging.rb:22:in `tagged'
+  (gem) railties-3.2.12/lib/rails/rack/logger.rb:16:in `call'
+  (gem) quiet_assets-1.0.2/lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  (gem) rack-1.4.5/lib/rack/methodoverride.rb:21:in `call'
+  (gem) rack-1.4.5/lib/rack/runtime.rb:17:in `call'
+  (gem) activesupport-3.2.12/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  (gem) rack-1.4.5/lib/rack/lock.rb:15:in `call'
+  (gem) actionpack-3.2.12/lib/action_dispatch/middleware/static.rb:62:in `call'
+  (gem) railties-3.2.12/lib/rails/engine.rb:479:in `call'
+  (gem) railties-3.2.12/lib/rails/application.rb:223:in `call'
+  (gem) rack-1.4.5/lib/rack/content_length.rb:14:in `call'
+  (gem) railties-3.2.12/lib/rails/rack/log_tailer.rb:17:in `call'
+  (gem) thin-1.5.0/lib/thin/connection.rb:81:in `block in pre_process'
+  (gem) thin-1.5.0/lib/thin/connection.rb:79:in `catch'
+  (gem) thin-1.5.0/lib/thin/connection.rb:79:in `pre_process'
+  (gem) thin-1.5.0/lib/thin/connection.rb:54:in `process'
+  (gem) thin-1.5.0/lib/thin/connection.rb:39:in `receive_data'
+  (gem) eventmachine-1.0.1/lib/eventmachine.rb:187:in `run_machine'
+  (gem) eventmachine-1.0.1/lib/eventmachine.rb:187:in `run'
+  (gem) thin-1.5.0/lib/thin/backends/base.rb:63:in `start'
+  (gem) thin-1.5.0/lib/thin/server.rb:159:in `start'
+  (gem) rack-1.4.5/lib/rack/handler/thin.rb:13:in `run'
+  (gem) rack-1.4.5/lib/rack/server.rb:268:in `start'
+  (gem) railties-3.2.12/lib/rails/commands/server.rb:70:in `start'
+  (gem) railties-3.2.12/lib/rails/commands.rb:55:in `block in <top (required)>'
+  (gem) railties-3.2.12/lib/rails/commands.rb:50:in `tap'
+  (gem) railties-3.2.12/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+
+Started POST "/__better_errors/51476780/variables" for 127.0.0.1 at 2013-03-04 23:26:57 +0800
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:27:06 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 32ms (Views: 31.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:27:45 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 55ms (Views: 54.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-04 23:28:00 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (9.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 192.168.0.101 at 2013-03-04 23:38:43 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Completed 200 OK in 8ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:11:27 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.8ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:12:09 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (2ms)  (pid 8984)
+Compiled application.css  (2ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 79ms (Views: 78.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:12:37 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (9.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 19ms (Views: 19.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:12:52 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 56ms (Views: 55.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:13:07 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (2ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 33ms (Views: 32.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:13:47 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 58ms (Views: 57.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:14:16 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 32ms (Views: 31.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:14:16 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 9ms (Views: 9.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:17:22 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+WARNING on line 7 of /home/marshall/rails-work-space/KnowledgeSharing/app/assets/stylesheets/main.css.scss: ".row input" failed to @extend ".search-query".
+  The selector ".search-query" was not found.
+  This will be an error in future releases of Sass.
+  Use "@extend .search-query !optional" if the extend should be able to fail.
+
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 27ms (Views: 26.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:17:24 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 15ms (Views: 14.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:18:32 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 75.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:19:44 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+WARNING on line 7 of /home/marshall/rails-work-space/KnowledgeSharing/app/assets/stylesheets/main.css.scss: ".row input" failed to @extend ".search-query".
+  The selector ".search-query" was not found.
+  This will be an error in future releases of Sass.
+  Use "@extend .search-query !optional" if the extend should be able to fail.
+
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 70ms (Views: 69.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:20:02 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.2ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 77ms (Views: 76.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:20:51 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.1ms)
+WARNING on line 6 of /home/marshall/rails-work-space/KnowledgeSharing/app/assets/stylesheets/main.css.scss: ".my-query" failed to @extend ".search-query".
+  The selector ".search-query" was not found.
+  This will be an error in future releases of Sass.
+  Use "@extend .search-query !optional" if the extend should be able to fail.
+
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 34ms (Views: 33.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:23:41 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.0ms)
+Compiled main.css  (6ms)  (pid 8984)
+Compiled application.css  (2ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 60ms (Views: 59.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:23:43 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:24:05 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (5ms)  (pid 8984)
+Compiled application.css  (2ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 34ms (Views: 33.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:25:48 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.3ms)
+Compiled main.css  (2ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 32ms (Views: 31.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:25:50 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:26:05 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:26:42 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.1ms)
+Compiled main.css  (2ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 47ms (Views: 46.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:27:15 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.4ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:27:55 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 11.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:28:44 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:29:06 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 13ms (Views: 12.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:29:24 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (3ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 33ms (Views: 32.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:29:35 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (2ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 79ms (Views: 78.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:29:36 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:30:55 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 62ms (Views: 61.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:32:01 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (5ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 33ms (Views: 32.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:32:14 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (5ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 33ms (Views: 32.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:32:24 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (5ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 76ms (Views: 75.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:32:34 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 11ms (Views: 11.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:33:02 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 70ms (Views: 70.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:34:30 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:34:47 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 66ms (Views: 65.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:35:31 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 65ms (Views: 64.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:36:43 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 23ms (Views: 22.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:36:55 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 22ms (Views: 22.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:37:09 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 69ms (Views: 68.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:37:10 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 9ms (Views: 9.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:37:20 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (3.8ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 13ms (Views: 12.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:37:26 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (5.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 14ms (Views: 14.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:37:34 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (7.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:38:25 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 74ms (Views: 74.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:38:55 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 34ms (Views: 34.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:39:23 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:39:49 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 15ms (Views: 15.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:40:45 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 17ms (Views: 16.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:40:52 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:41:10 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 78ms (Views: 77.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:41:25 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 32ms (Views: 32.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:41:32 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 37ms (Views: 36.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:42:17 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (2.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 11.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:42:37 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (4.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 15ms (Views: 15.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:42:42 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:43:07 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (2ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 70ms (Views: 70.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:43:16 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (6.6ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:44:36 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 92ms (Views: 91.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:44:49 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 23ms (Views: 23.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:45:07 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 72ms (Views: 71.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:45:24 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (1.7ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:45:31 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 68ms (Views: 68.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:45:31 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 10ms (Views: 9.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:45:32 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:45:42 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:46:33 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 76ms (Views: 75.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:46:40 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 69ms (Views: 68.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:46:56 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 23ms (Views: 22.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:47:45 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 68ms (Views: 67.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:48:32 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (3.0ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 30ms (Views: 29.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-05 00:48:43 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+Compiled main.css  (4ms)  (pid 8984)
+Compiled application.css  (1ms)  (pid 8984)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 44ms (Views: 43.5ms | ActiveRecord: 0.2ms)
