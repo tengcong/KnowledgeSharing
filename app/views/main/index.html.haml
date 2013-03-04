@@ -1,7 +1,22 @@
-%h1
-  Test
-%form
-  %input(type='text' ng-model='newEntry.name')
 
-    {{newEntry.name}}
+.hero-unit
+  %h1
+    Everyday Tip
+  %p
+    目前最流行的 Rails 部署方式是 Passenger, Thin 或者 Unicorn 配合 Nginx 使用。
+  %p
+    %a.btn.btn-large
+      %i.icon-heart
+      helpful
+
+%input.span8.search-query
+
+
+.alert.alert-info
+  {{Tip.content}}
+
+%h1
+  Tips
+%form
+  %input(type='text' ng-model='Tip.content')
 
