@@ -1,31 +1,42 @@
+-# .row
+-#   .span12
+-#     .articles(ng-controller='TipListCtrl')
+-#       .header
+-#         %strong
+-#           Welcome to
+-#         %em
+-#           knowledge sharing system
+-#         %a.pull-right(href='#')
+-#           %i.icon-plus
+-#
+-#       .cell(ng-repeat='article in articles')
+-#         .pull-right
+-#           .badge {{articles.num}}
+-#         %div(class="article") {{article.content}}
+-#
+-#         .tags
+-#           %ul.nav.nav-pills
+-#             %li(ng-repeat="tag in article.tags")
+-#               %a(href='#') {{tag}}
+
 .row
-  .span6
-    .articles
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-      .cell this is a tip
-  .span6
-    .articles
-      .cell this is a article
-      .cell this is a article
-      .cell this is a article
-      .cell this is a article
-      .cell this is a article
-      .cell this is a article
-      .cell this is a article
-      .cell this is a article
+  .span12
+    .articles(ng-view)
+      .header
+        %strong
+          Welcome to
+        %em
+          knowledge sharing system
+        %a.pull-right(href='#')
+          %i.icon-plus
+
+      .cell(ng-repeat='article in articles')
+        .pull-right
+          .badge {{articles.num}}
+        %div(class="article") {{article.content}}
+
+        .tags
+          %ul.nav.nav-pills
+            %li(ng-repeat="tag in article.tags")
+              %a(href='#') {{tag}}
+
