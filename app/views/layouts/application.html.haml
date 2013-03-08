@@ -3,17 +3,20 @@
   %head
     %title Knowledge Sharing
     = stylesheet_link_tag    "application", :media => "all"
-    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .navbar.navbar-static-top.navbar-fixed-bottom
+    .navbar.navbar-fixed-bottom
       .navbar-inner
         .container
           %a.brand(href="#{root_path}")Knowledge Sharing
+          %form.navbar-search.offset1.form-search
+            .input-append
+              %input.search-query.span5(placeholder='type here ...' type='text')
+              %button(type="submit" class="btn") Search
           %ul.nav.pull-right
             %li.dropdown
               %a.dropdown-toggle(href="#" data-toggle='dropdown')
-                帐号
+                Account
                 %b.caret
               %ul.dropdown-menu
                 -if user_signed_in?
@@ -31,3 +34,4 @@
     #wrap
       .container
         = yield
+    = javascript_include_tag "application"

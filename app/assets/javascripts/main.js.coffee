@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+angular.module('articles').
+  config(($routeProvider)->
+    $routeProvider.
+      when('/', {controller: TipListCtrl}, templateUrl: 'list.html')
+  )
+
+window.TipListCtrl =
+  ($scope)->
+    $scope.articles = [{ 'content': 'you can use rspec to write unit test','num': 2, 'type': 'tip','tags': ['=program', '@rails', '-rspec', '@unittest']},{ 'content': 'classmethod 可以被继承', 'num': 4, 'type': 'tip','tags': ['=program', '@ruby', '-metaprogramming', '-classmethod'] },{'content': 'you can use float to do layout stuff', 'num': 1, 'type': 'article','tags': ['=program', '@css', '-float', '-layout']},{'content': 'BabyFace release new album', 'num': 1, 'type': 'article', 'tags': ['=music', '@rnb', '-babyface']}]
+
+
+

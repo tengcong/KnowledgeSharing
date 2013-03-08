@@ -15,6 +15,7 @@
 
 #wrap{
   padding-top: 30px;
+  min-height: 900px;
   background-color: #E0E0E0;
 }
 
