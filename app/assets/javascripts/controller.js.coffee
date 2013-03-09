@@ -4,4 +4,5 @@
 
 @SharingCtrl =
   ($scope) ->
-    1
+    $scope.save = ->
+

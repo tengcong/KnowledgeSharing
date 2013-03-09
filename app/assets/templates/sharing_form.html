@@ -1,15 +1,25 @@
 <form class="form-horizontal">
-  <legend>Time to share</legend>
   <div class="control-group">
     <div class="controls">
-      <input type="text" placeholder="what's the title ?" id='title' name='title'></input>
+      <legend>Time to share</legend>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <input type="text" class='big-input' placeholder="title" name='title'></input>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
-      <textarea style='width: auto' cols="90" rows="15" id='content' name='content' placeholder='content goes here'></textarea>
+      <input type="text" class='big-input' placeholder="tags" name='tags'></input>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <textarea class='big-input' rows="9" name='content' placeholder='content goes here'></textarea>
       <div class="help-block">
-        <ul style='list-style: none'>
+        <ul>
           <li>the resource url</li>
           <li>you can modified with Markdown</li>
         </ul>
