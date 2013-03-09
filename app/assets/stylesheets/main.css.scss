@@ -1,5 +1,14 @@
+.header{
+  border-bottom: 2px solid #999;
+  padding-left: 30px;
+  text-decoration:underline;
+
+  .pull-little-right{
+    margin-left: 20px;
+  }
+}
 .articles{
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px;
   min-height: 500px;
   background: white;
@@ -8,11 +17,6 @@
   border-bottom: 1px solid #E2E2E9;
   margin-bottom: 50px;
 
-  .header{
-    border-bottom: 2px solid #999;
-    margin-bottom: 39px;
-    padding-left: 30px;
-  }
   .cell{
     font-size: 14px;
     color: #33333;
@@ -21,7 +25,7 @@
     border-bottom: 1px solid silver;
 
     .article{
-      padding-left: 60px;
+      padding-left: 30px;
       margin-top:3px;
       font-size: 18px;
     }
