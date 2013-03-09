@@ -7388,3 +7388,81 @@ Processing by MainController#index as HTML
   Rendered main/index.html.haml within layouts/application (0.1ms)
   [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
 Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.2ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to DeviseCreateUsers (20130304083922)
+Migrating to CreateArticlesTags (20130309064551)
+  [1m[35m (128.8ms)[0m  CREATE TABLE `articles_tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `article_id` int(11), `tag_id` int(11), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (200.6ms)[0m  [1mCREATE INDEX `index_articles_tags_on_article_id` ON `articles_tags` (`article_id`)[0m
+  [1m[35m (234.3ms)[0m  CREATE INDEX `index_articles_tags_on_tag_id` ON `articles_tags` (`tag_id`)
+  [1m[36m (66.6ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130309064551')[0m
+Migrating to CreateTags (20130309064616)
+  [1m[35m (132.9ms)[0m  CREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130309064616')[0m
+Migrating to CreateArticles (20130309064634)
+  [1m[35m (189.8ms)[0m  CREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `content` text, `user_id` int(11), `article_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (256.5ms)[0m  [1mCREATE INDEX `index_articles_on_user_id` ON `articles` (`user_id`)[0m
+  [1m[35m (77.7ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130309064634')
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateArticles (20130309064634)
+  [1m[36m (231.0ms)[0m  [1mDROP INDEX `index_articles_on_user_id` ON `articles`[0m
+  [1m[35m (78.1ms)[0m  DROP TABLE `articles`
+  [1m[36m (88.9ms)[0m  [1mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20130309064634'[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateTags (20130309064616)
+  [1m[36m (102.8ms)[0m  [1mDROP TABLE `tags`[0m
+  [1m[35m (55.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20130309064616'
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Migrating to CreateArticlesTags (20130309064551)
+  [1m[36m (255.6ms)[0m  [1mDROP INDEX `index_articles_tags_on_tag_id` ON `articles_tags`[0m
+  [1m[35m (223.0ms)[0m  DROP INDEX `index_articles_tags_on_article_id` ON `articles_tags`
+  [1m[36m (56.2ms)[0m  [1mDROP TABLE `articles_tags`[0m
+  [1m[35m (101.5ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20130309064551'
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to DeviseCreateUsers (20130304083922)
+Migrating to CreateArticlesTags (20130309064551)
+  [1m[35m (161.1ms)[0m  CREATE TABLE `articles_tags` (`article_id` int(11), `tag_id` int(11)) ENGINE=InnoDB
+  [1m[36m (280.2ms)[0m  [1mCREATE INDEX `index_articles_tags_on_article_id` ON `articles_tags` (`article_id`)[0m
+  [1m[35m (267.7ms)[0m  CREATE INDEX `index_articles_tags_on_tag_id` ON `articles_tags` (`tag_id`)
+  [1m[36m (66.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130309064551')[0m
+Migrating to CreateTags (20130309064616)
+  [1m[35m (210.9ms)[0m  CREATE TABLE `tags` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (77.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130309064616')[0m
+Migrating to CreateArticles (20130309064634)
+  [1m[35m (221.9ms)[0m  CREATE TABLE `articles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `content` text, `user_id` int(11), `article_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (278.8ms)[0m  [1mCREATE INDEX `index_articles_on_user_id` ON `articles` (`user_id`)[0m
+  [1m[35m (77.6ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20130309064634')
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m

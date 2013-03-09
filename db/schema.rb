@@ -11,7 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304083922) do
+ActiveRecord::Schema.define(:version => 20130309064634) do
+
+  create_table "articles", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.string   "article_type"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
+  create_table "articles_tags", :id => false, :force => true do |t|
+    t.integer "article_id"
+    t.integer "tag_id"
+  end
+
+  add_index "articles_tags", ["article_id"], :name => "index_articles_tags_on_article_id"
+  add_index "articles_tags", ["tag_id"], :name => "index_articles_tags_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
