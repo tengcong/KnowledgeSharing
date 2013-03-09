@@ -7365,3 +7365,26 @@ Compiled main.css  (8ms)  (pid 3084)
 Compiled application.css  (1ms)  (pid 3084)
   [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
 Completed 200 OK in 86ms (Views: 85.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-09 11:06:41 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Compiled app.js  (167ms)  (pid 3084)
+Compiled application.js  (8ms)  (pid 3084)
+Completed 200 OK in 280ms (Views: 278.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-09 11:15:14 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.2ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Completed 200 OK in 21ms (Views: 20.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-03-09 11:16:30 +0800
+Processing by MainController#index as HTML
+  Rendered main/index.html.haml within layouts/application (0.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.2ms)
