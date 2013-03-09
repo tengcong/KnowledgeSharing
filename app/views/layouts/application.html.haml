@@ -1,5 +1,5 @@
 !!! 5
-%html(lang='zh-CN' ng-app)
+%html(lang='zh-CN' ng-app='knowledgeSharing')
   %head
     %title Knowledge Sharing
     = stylesheet_link_tag    "application", :media => "all"
@@ -11,7 +11,7 @@
           %a.brand(href="#{root_path}")Knowledge Sharing
           %form.navbar-search.offset1.form-search
             .input-append
-              %input.search-query.span5(placeholder='type here ...' type='text')
+              %input.search-query.span5(placeholder='type here ...' type='text' ng-model='query')
               %button(type="submit" class="btn") Search
           %ul.nav.pull-right
             %li.dropdown
@@ -21,17 +21,19 @@
               %ul.dropdown-menu
                 -if user_signed_in?
                   %li
-                    =link_to '编辑', edit_user_registration_path
+                    =link_to 'Edit', edit_user_registration_path
                   %li.divider
                   %li
-                    =link_to '登出', destroy_user_session_path, :method => 'delete'
+                    =link_to 'LogOut', destroy_user_session_path, :method => 'delete'
                 -else
                   %li
-                    =link_to '登录', new_user_session_path
+                    =link_to 'SignIn', new_user_session_path
                   %li.divider
                   %li
-                    =link_to '注册', new_user_registration_path
+                    =link_to 'SignUp', new_user_registration_path
     #wrap
       .container
-        = yield
+        .row
+          .span12
+            =yield
     = javascript_include_tag "application"
