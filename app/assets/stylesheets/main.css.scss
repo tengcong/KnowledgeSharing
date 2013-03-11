@@ -24,16 +24,21 @@
     color: #999;
   }
 
-  .article{
+  .detail{
     .title{
       line-height: 32px;
+      float: left;
+      font-size: 38.5px;
+      padding-left: 10px;
     }
     .type{
       font-size: 12px;
       margin-top: 5px;
       color: #999;
+      float: right;
     }
     .content{
+      clear: both;
       color: black;
       font-size: 14px;
       line-height: 180%;
