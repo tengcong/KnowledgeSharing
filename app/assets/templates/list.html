@@ -1,5 +1,7 @@
 <div class="cell" ng-repeat='article in articles | filter:query'>
-  <div class="article">{{article.content}}</div>
+  <div class="article">
+    <a class='title' href="#/show/{{article.id}}">{{article.title}}</a>
+  </div>
   <div class="tags">
     <ul class="nav nav-pills">
       <li ng-repeat='tag in article.tags'>

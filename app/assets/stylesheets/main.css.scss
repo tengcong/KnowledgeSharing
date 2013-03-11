@@ -19,6 +19,16 @@
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid #E2E2E9;
   margin-bottom: 50px;
+  a.title{
+    text-decoration:none;
+    color: #999;
+  }
+
+  .article{
+    .title{
+      background-color: silver;
+    }
+  }
 
   .cell{
     font-size: 14px;

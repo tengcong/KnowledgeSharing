@@ -1,5 +1,5 @@
 collection @articles
-attributes :title, :content, :article_type
+attributes :title, :article_type, :id
 # child(:user) { attributes :full_name }
 # node(:read) { |post| post.read_by?(@user) }
 child(:tags) do

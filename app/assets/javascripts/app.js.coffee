@@ -7,6 +7,7 @@ module.config ["$httpProvider", (provider) ->
 module.config ($routeProvider) ->
   $routeProvider
   .when('/', controller: ListCtrl, templateUrl: '/assets/list.html')
-  .when('/sharing', controller: SharingCtrl, templateUrl: '/assets/sharing_form.html')
+  .when('/sharing', controller: CreateCtrl, templateUrl: '/assets/sharing_form.html')
+  .when('/show/:articleId', controller: ShowCtrl, templateUrl: '/assets/detail.html')
   .otherwise redirectTo: '/'
 
