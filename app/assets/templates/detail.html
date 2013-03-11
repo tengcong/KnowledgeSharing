@@ -2,10 +2,9 @@
   <div class="title">
     <h1>{{article.title}}</h1>
   </div>
-  <p class='lead pull-left'>
+  <p class='type'>
     {{article.article_type}}
   </p>
-  <p>
-    {{article.content}}
+  <p class='content' ng-bind-html-unsafe='article.content'>
   </p>
 </div>

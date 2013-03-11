@@ -10,8 +10,7 @@ class ArticlesController < ApplicationController
 
   def show
     article = Article.find(params[:id])
-    article.content = Article.renderer.render 'This is *bongos*, indeed.'
-    # article.tags = article.tags
+    article.content = Article.renderer.render(article.content)
     render :json => article.to_json
   end
 end

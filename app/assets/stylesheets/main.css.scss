@@ -26,7 +26,21 @@
 
   .article{
     .title{
-      background-color: silver;
+      line-height: 32px;
+    }
+    .type{
+      font-size: 12px;
+      margin-top: 5px;
+      color: #999;
+    }
+    .content{
+      color: black;
+      font-size: 14px;
+      line-height: 180%;
+      oeverflow: hidden;
+      word-break: break-word;
+      padding: 10px;
+      border-bottom: 1px solid #F0F0F0;
     }
   }
 
