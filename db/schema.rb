@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130309064634) do
 
   create_table "articles", :force => true do |t|
+    t.string   "title"
     t.text     "content"
     t.integer  "user_id"
     t.string   "article_type"

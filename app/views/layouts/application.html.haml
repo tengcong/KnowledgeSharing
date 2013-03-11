@@ -39,7 +39,8 @@
             %strong
               %em
                 %a(href="#/") Knowledge Sharing System
-                %a(href="#/sharing" class="pull-little-right")
-                  %i.icon-plus
+                -if user_signed_in?
+                  %a(href="#/sharing" class="pull-little-right")
+                    %i.icon-plus
           =yield
     = javascript_include_tag "application"

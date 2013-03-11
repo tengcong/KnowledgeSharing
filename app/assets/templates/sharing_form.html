@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form class="form-horizontal" ng-controller='SharingCtrl'>
   <div class="control-group">
     <div class="controls">
       <legend>Time to share</legend>
@@ -7,17 +7,22 @@
 
   <div class="control-group">
     <div class="controls">
-      <input type="text" class='big-input' placeholder="title" name='title'></input>
+      <input type="text" ng-model='sharing_form.title' class='big-input' placeholder="title"></input>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
-      <input type="text" class='big-input' placeholder="tags" name='tags'></input>
+      <input type="text" ng-model='sharing_form.article_type' class='big-input' placeholder="article type"></input>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
-      <textarea class='big-input' rows="9" name='content' placeholder='content goes here'></textarea>
+      <input type="text" ng-model='sharing_form.tags' class='big-input' placeholder="tags"></input>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <textarea ng-model='sharing_form.content' class='big-input' rows="9" placeholder='content goes here'></textarea>
       <div class="help-block">
         <ul>
           <li>the resource url</li>
@@ -28,7 +33,9 @@
   </div>
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Submit</button>
+      <button ng-click='save()' class="btn">Submit</button>
     </div>
   </div>
+  <hr />
+  Debug View: <pre>sharing_form={{sharing_form}}</pre>
 </form>

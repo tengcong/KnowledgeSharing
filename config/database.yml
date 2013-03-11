@@ -4,8 +4,8 @@ default: &default
   reconnect: false
   pool: 5
   username: root
-  password: congteng45
-  socket: /var/run/mysqld/mysqld.sock
+  password: root
+  socket: /tmp/mysql.sock
   # host: 127.0.0.1
   # port: 3306
 

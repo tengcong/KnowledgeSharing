@@ -33,6 +33,8 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
 gem 'kaminari'
+gem 'rabl'
+gem 'oj'
 
 gem 'redcarpet'
 
