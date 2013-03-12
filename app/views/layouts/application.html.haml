@@ -9,9 +9,9 @@
       .navbar-inner
         .container
           %a.brand(href="#{root_path}")Knowledge Sharing
-          %form.navbar-search.offset1.form-search
+          %form.navbar-search.offset1.form-search()
             .input-append
-              %input.search-query.span5(placeholder='keywords | commands ...' type='text' ng-model='query')
+              %input.search-query.span5(placeholder='keywords | commands ...' type='text' ng-init="query.commands=''" ng-model='query.commands')
               %button(type="submit" class="btn") Search
           %ul.nav.pull-right
             %li.dropdown

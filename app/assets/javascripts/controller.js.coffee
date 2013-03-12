@@ -3,6 +3,9 @@
     $scope.articles = Article.index()
     $scope.tags = Tag.index()
 
+    $scope.addToQuery = (name)->
+      $scope.query.commands += name + ', '
+
 @CreateCtrl =
   ($scope, $location, Article) ->
     $scope.save = ->
