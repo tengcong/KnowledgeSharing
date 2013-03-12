@@ -1,6 +1,6 @@
 <div class='row'>
   <div class='span9 articles'>
-    <div class="cell" ng-repeat='article in articles | filter: query.commands'>
+    <div class="cell" ng-repeat='article in articles | tagsFilter: query.commands'>
       <div class="article">
         <a class='title' href="#/show/{{article.id}}">{{article.title}}</a>
       </div>

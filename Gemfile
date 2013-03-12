@@ -11,6 +11,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'underscore-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.0'
