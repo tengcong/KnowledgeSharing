@@ -17,10 +17,21 @@
   ($scope, $routeParams, $location, Article) ->
     $scope.article = Article.get({id: $routeParams.articleId, render: true})
 
+    $scope.getStyle = (type) ->
+      typeMapping = {
+        'tip'      : 'icon-star',
+        'document' : 'icon-font',
+        'book'     : 'icon-book',
+        'video'    : 'icon-film',
+        'audio'    : 'icon-music'
+      }
+      typeMapping[type]
+
     $scope.remove = ()->
-      $scope.article.$destroy {id: $scope.article.id}, (data)->
-        if(data.success)
-          $location.path '/'
+      if confirm 'are you sure?'
+        $scope.article.$destroy {id: $scope.article.id}, (data)->
+          if(data.success)
+            $location.path '/'
 
 @EditCtrl =
   ($scope, $routeParams, $location, Article) ->

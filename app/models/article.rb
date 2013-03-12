@@ -2,13 +2,6 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :tags
   attr_accessible :title, :article_type, :content
-  ARTICLE_TYPES_MAPPING = {
-    'tip'      => 'icon-start',
-    'document' => 'icon-font',
-    'book'     => 'icon-book',
-    'video'    => 'icon-film',
-    'audio'    => 'icon-music'
-  }
 
   default_scope :include => :tags
 
@@ -30,6 +23,11 @@ class Article < ActiveRecord::Base
     self.update_attributes article_attr
     self.tags = Tag.get_tags_from(tags)
     self.save
+  end
+
+  def destroy_with_orphan_tags
+    tags.select{|tag| tag.articles.size == 1 }.map{|t| t.destroy}
+    self.destroy
   end
 
   def as_json(options={})

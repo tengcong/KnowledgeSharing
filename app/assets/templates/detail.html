@@ -4,7 +4,7 @@
   </div>
   <div class='type'>
     <a href="#">
-      {{article.article_type}}
+      <i class='{{getStyle(article.article_type)}}'></i>
     </a>
     <a href="#/edit/{{article.id}}">
       <i class='icon-edit'></i>
@@ -15,7 +15,4 @@
   </div>
   <p class='content' ng-bind-html-unsafe='article.content'>
   </p>
-  <!-- <pre> -->
-  <!--   debug = {{article}} -->
-  <!-- </pre> -->
 </div>

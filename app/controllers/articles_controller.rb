@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    if @article.destroy
+    if @article.destroy_with_orphan_tags
       render :json => {success: true}
     end
   end
