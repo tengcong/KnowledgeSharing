@@ -17,6 +17,16 @@
   ($scope, $routeParams, $location, Article) ->
     $scope.article = Article.get({id: $routeParams.articleId, render: true})
 
+    $scope.getShow = (id) ->
+      if $('#ars').length != 0 && id != undefined
+        article_ids = $('#ars').data('docs').split(', ')
+        if _.contains(article_ids, id.toString())
+          "manage-show"
+        else
+          "manage-hide"
+      else
+        "manage-hide"
+
     $scope.getStyle = (type) ->
       typeMapping = {
         'tip'      : 'icon-star',

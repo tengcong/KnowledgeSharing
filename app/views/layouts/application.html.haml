@@ -43,3 +43,5 @@
                     %i.icon-plus
         =yield
     = javascript_include_tag "application"
+    -if user_signed_in?
+      %input(id='ars' type='hidden' data-user="#{current_user.email}" data-docs="#{current_user.articles.map{|a| a.id}.join(', ')}")
