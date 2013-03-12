@@ -1,11 +1,23 @@
-<div class="cell" ng-repeat='article in articles | filter:query'>
-  <div class="article">
-    <a class='title' href="#/show/{{article.id}}">{{article.title}}</a>
+<div class='row'>
+  <div class='span9 articles'>
+    <div class="cell" ng-repeat='article in articles | filter:query'>
+      <div class="article">
+        <a class='title' href="#/show/{{article.id}}">{{article.title}}</a>
+      </div>
+      <div class="tags">
+        <ul class="nav nav-pills">
+          <li ng-repeat='tag in article.tags'>
+          <a href="#">{{tag.name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="tags">
-    <ul class="nav nav-pills">
-      <li ng-repeat='tag in article.tags'>
-        <a href="#">{{tag.name}}</a>
+
+  <div class='span2 tag_list'>
+    <ul class='nav nav-tabs nav-stacked'>
+      <li ng-repeat='tag in tags | filter: query'>
+        <a ng-click='addToQuery()'>{{tag.name}}</a>
       </li>
     </ul>
   </div>

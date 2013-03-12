@@ -2,9 +2,20 @@
   <div class="title">
     <h1>{{article.title}}</h1>
   </div>
-  <p class='type'>
-    {{article.article_type}}
-  </p>
+  <div class='type'>
+    <a href="#">
+      {{article.article_type}}
+    </a>
+    <a href="#/edit/{{article.id}}">
+      <i class='icon-edit'></i>
+    </a>
+    <a href='#' ng-click='remove()'>
+      <i class='icon-remove'></i>
+    </a>
+  </div>
   <p class='content' ng-bind-html-unsafe='article.content'>
   </p>
+  <!-- <pre> -->
+  <!--   debug = {{article}} -->
+  <!-- </pre> -->
 </div>

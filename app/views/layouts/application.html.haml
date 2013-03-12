@@ -33,8 +33,7 @@
                     =link_to 'SignUp', new_user_registration_path
     #wrap
       .container
-        .row
-          .span12
+        .span12
           .header
             %strong
               %em
@@ -42,5 +41,5 @@
                 -if user_signed_in?
                   %a(href="#/sharing" class="pull-little-right")
                     %i.icon-plus
-          =yield
+        =yield
     = javascript_include_tag "application"

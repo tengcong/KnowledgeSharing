@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
+  before_filter :find_article, :except => [:index, :create]
   respond_to :json
+
   def create
     Article.collect params, current_user
   end
@@ -9,8 +11,25 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    article = Article.find(params[:id])
-    article.content = Article.renderer.render(article.content)
-    render :json => article.to_json
+    if params[:render]
+      @article.content = Article.renderer.render(@article.content)
+    end
+    render :json => @article.to_json
+  end
+
+  def update
+    @article.update_article(params[:article], params[:tags])
+    render :json => @article.to_json
+  end
+
+  def destroy
+    if @article.destroy
+      render :json => {success: true}
+    end
+  end
+
+  private
+  def find_article
+    @article = Article.find params[:id]
   end
 end
