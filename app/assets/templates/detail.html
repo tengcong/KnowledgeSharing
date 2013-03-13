@@ -3,7 +3,7 @@
     <h1>{{article.title}}</h1>
   </div>
   <div class='type'>
-    <a href="#/">
+    <a ng-click='getSameType(article.article_type)'>
       <i class='{{getStyle(article.article_type)}}'></i>
     </a>
     <a class='{{getShow(article.id)}}' href="#/edit/{{article.id}}">

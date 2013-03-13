@@ -5,12 +5,12 @@
         <a class='title' href="#/show/{{article.id}}">
           {{article.title}}
         </a>
-        <i class='{{getStyle(article.article_type)}} pull-right'></i>
+        <a ng-click="addToQuery('type', article.article_type)"><i class='{{getStyle(article.article_type)}} pull-right'></i></a>
       </div>
       <div class="tags">
         <ul class="nav nav-pills">
           <li ng-repeat='tag in article.tags'>
-          <a ng-click='addToQuery(tag.name)'>{{tag.name}}</a>
+          <a ng-click="addToQuery('tags', tag.name)">{{tag.name}}</a>
           </li>
         </ul>
       </div>
@@ -20,7 +20,7 @@
   <div class='span2 tag_list'>
     <ul class='nav nav-tabs nav-stacked'>
       <li ng-repeat='tag in tags'>
-        <a ng-click='addToQuery(tag.name)'>{{tag.name}}</a>
+        <a ng-click="addToQuery('tags', tag.name)">{{tag.name}}</a>
       </li>
       <!-- <pre> -->
       <!-- debug -->

@@ -3,8 +3,8 @@
     $scope.articles = Article.index()
     $scope.tags = Tag.index()
 
-    $scope.addToQuery = (name)->
-      $scope.query.commands = 'tags: ' if $scope.query.commands == ''
+    $scope.addToQuery =  (cate, name)->
+      $scope.query.commands = cate + ': ' if $scope.query.commands == ''
       $scope.query.commands += name + ', '
 
     $scope.getStyle = getStyle
@@ -34,6 +34,10 @@ CreateCtrl.$inject = ['$scope', '$location', 'Article'];
 
     $scope.getStyle = getStyle
 
+    $scope.getSameType = (type)->
+      $scope.query.commands = 'type: ' + type
+      $location.path '/'
+
     $scope.remove = ()->
       if confirm 'are you sure?'
         $scope.article.$destroy {id: $scope.article.id}, (data)->
@@ -51,6 +55,8 @@ ShowCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article'];
           $location.path '/show/' + article.id
 
 
+EditCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article'];
+
 getStyle = (type) ->
   typeMapping = {
     'tip'      : 'icon-star',
@@ -60,4 +66,4 @@ getStyle = (type) ->
     'audio'    : 'icon-music'
   }
   typeMapping[type]
-EditCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article'];
+

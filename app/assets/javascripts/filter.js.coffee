@@ -34,6 +34,7 @@ matchTags = (articles, query) ->
 matchType = (articles, query) ->
   _.filter articles, (article) ->
     query = query.replace /\s*type:\s*/, ''
+    query = query.replace /,*\s*$/, ''
     patt = new RegExp(query)
     patt.test article.article_type
 
