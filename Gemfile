@@ -6,12 +6,12 @@ gem 'mysql2'
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'angularjs-rails'
   gem 'uglifier'
 end
 
 gem 'jquery-rails'
 gem 'underscore-rails'
+gem 'angularjs-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.0'

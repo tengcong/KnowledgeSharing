@@ -8,6 +8,7 @@
       $scope.query.commands += name + ', '
 
     $scope.getStyle = getStyle
+ListCtrl.$inject = ['$scope', 'Article', 'Tag'];
 
 @CreateCtrl =
   ($scope, $location, Article) ->
@@ -15,6 +16,7 @@
       if($scope.articleForm.$valid)
         Article.save $scope.article, (article)->
           $location.path '/'
+CreateCtrl.$inject = ['$scope', '$location', 'Article'];
 
 @ShowCtrl =
   ($scope, $routeParams, $location, Article) ->
@@ -37,6 +39,7 @@
         $scope.article.$destroy {id: $scope.article.id}, (data)->
           if(data.success)
             $location.path '/'
+ShowCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article'];
 
 @EditCtrl =
   ($scope, $routeParams, $location, Article) ->
@@ -57,3 +60,4 @@ getStyle = (type) ->
     'audio'    : 'icon-music'
   }
   typeMapping[type]
+EditCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article'];
