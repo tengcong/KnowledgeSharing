@@ -43,6 +43,7 @@ CreateCtrl.$inject = ['$scope', '$location', 'Article'];
         $scope.article.$destroy {id: $scope.article.id}, (data)->
           if(data.success)
             $location.path '/'
+
 ShowCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article'];
 
 @EditCtrl =
