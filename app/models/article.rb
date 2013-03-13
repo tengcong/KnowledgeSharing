@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
   attr_accessible :title, :article_type, :content
 
   default_scope :include => :tags
+  scope :desc, order("updated_at DESC")
 
   class << self
     def collect params, user
