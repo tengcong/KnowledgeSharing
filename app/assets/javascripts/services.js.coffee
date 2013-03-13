@@ -12,3 +12,5 @@ module.factory 'Tag', ($resource) ->
   $resource 'tags/:id', {}, {
     index:   {method: 'GET', params:{}, isArray: true}
   }
+
+module.$inject = ['$resource']

@@ -18,15 +18,16 @@ matchTags = (articles, query) ->
   _.filter articles, (article)->
 
     query = query.replace /tags:\s*/, ''
-    query = query.replace /,+\s*$/, ''
+    query = query.replace /,*\s*$/, ''
 
     _.every query.split(','), (term)->
+      term = term.replace /\s*/, ''
       article_tags = _.map article.tags, (t) ->
         t.name
 
       res = _.find article_tags, (tag)->
-        patt =  new RegExp('\\s*' + tag + '\\s*,*\\s*;*')
-        patt.test(term)
+        patt =  new RegExp('\\s*' + term + '\\s*')
+        patt.test(tag)
 
       res != undefined
 

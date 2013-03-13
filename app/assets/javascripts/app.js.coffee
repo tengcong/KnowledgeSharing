@@ -11,4 +11,4 @@ module.config ($routeProvider) ->
   .when('/show/:articleId', controller: ShowCtrl, templateUrl: '/assets/detail.html')
   .when('/edit/:articleId', controller: EditCtrl, templateUrl: '/assets/sharing_form.html')
   .otherwise redirectTo: '/'
-
+module.$inject = ['$routeProvider']
