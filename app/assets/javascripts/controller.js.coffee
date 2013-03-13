@@ -4,7 +4,7 @@
     $scope.tags = Tag.index()
 
     $scope.addToQuery = (name)->
-      $scope.query.commands = 'tag: ' if $scope.query.commands == ''
+      $scope.query.commands = 'tags: ' if $scope.query.commands == ''
       $scope.query.commands += name + ', '
 
     $scope.getStyle = getStyle
