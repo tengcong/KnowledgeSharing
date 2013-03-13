@@ -4,8 +4,7 @@
     $scope.tags = Tag.index()
 
     $scope.addToQuery =  (cate, name)->
-      $scope.query.commands = cate + ': ' if $scope.query.commands == ''
-      $scope.query.commands += name + ', '
+      $scope.query.commands += ' | ' + cate + ': ' + name
 
     $scope.getStyle = getStyle
 ListCtrl.$inject = ['$scope', 'Article', 'Tag'];

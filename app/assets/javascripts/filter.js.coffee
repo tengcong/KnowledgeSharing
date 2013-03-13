@@ -2,8 +2,9 @@ module = angular.module 'ArticlesFilters', []
 module.filter 'maxFilter', ->
   (articles, query) ->
     if query.length != 0
-      commands = query.split('|')
+      commands = removeSfxSpace(removePreSpace(query)).split('|')
       _.each commands, (command) ->
+        command = removeSfxSpace removePreSpace(command)
         if /\s*tags\s*:/.test command
           articles = matchTags(articles, command)
         else if /\s*type\s*:/.test command
@@ -17,29 +18,38 @@ module.filter 'maxFilter', ->
 matchTags = (articles, query) ->
   _.filter articles, (article)->
 
-    query = query.replace /tags:\s*/, ''
-    query = query.replace /,*\s*$/, ''
+    query = query.replace /\s*tags\s*:\s*/, ''
+    query = removeSfxComma query
 
     _.every query.split(','), (term)->
-      term = term.replace /\s*/, ''
+      term = removeSfxSpace(removePreSpace(term))
       article_tags = _.map article.tags, (t) ->
         t.name
 
       res = _.find article_tags, (tag)->
-        patt =  new RegExp('\\s*' + term + '\\s*')
+        patt =  new RegExp('\\s*' + term + '\\s*', 'i')
         patt.test(tag)
 
       res != undefined
 
 matchType = (articles, query) ->
   _.filter articles, (article) ->
-    query = query.replace /\s*type:\s*/, ''
-    query = query.replace /,*\s*$/, ''
-    patt = new RegExp(query)
+    query = query.replace /\s*type\s*:\s*/, ''
+    query = removeSfxComma query
+    patt = new RegExp(query, 'i')
     patt.test article.article_type
 
 defaultMatch = (articles, query) ->
   _.filter articles, (article) ->
+    query = removePreSpace(removePreSpace(query))
     patt = new RegExp('\\s*' + query + '\\s*', 'i')
     patt.test article.title
 
+removePreSpace = (origin)->
+  origin.replace /^\s*/, ''
+
+removeSfxSpace = (origin)->
+  origin.replace /\s*$/, ''
+
+removeSfxComma = (origin) ->
+  origin.replace /\s*,*\s*$/, ''
