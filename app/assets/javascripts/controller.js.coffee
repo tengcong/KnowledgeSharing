@@ -63,7 +63,8 @@ getStyle = (type) ->
     'document' : 'icon-font',
     'book'     : 'icon-book',
     'video'    : 'icon-film',
-    'audio'    : 'icon-music'
+    'audio'    : 'icon-music',
+    'question' : 'icon-wrench'
   }
   typeMapping[type]
 
