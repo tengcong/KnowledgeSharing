@@ -4,7 +4,10 @@
     $scope.tags = Tag.index()
 
     $scope.addToQuery = (name)->
+      $scope.query.commands = 'tag: ' if $scope.query.commands == ''
       $scope.query.commands += name + ', '
+
+    $scope.getStyle = getStyle
 
 @CreateCtrl =
   ($scope, $location, Article) ->
@@ -27,15 +30,7 @@
       else
         "manage-hide"
 
-    $scope.getStyle = (type) ->
-      typeMapping = {
-        'tip'      : 'icon-star',
-        'document' : 'icon-font',
-        'book'     : 'icon-book',
-        'video'    : 'icon-film',
-        'audio'    : 'icon-music'
-      }
-      typeMapping[type]
+    $scope.getStyle = getStyle
 
     $scope.remove = ()->
       if confirm 'are you sure?'
@@ -51,3 +46,14 @@
       if($scope.articleForm.$valid)
         $scope.article.$update {id: articleId}, (article)->
           $location.path '/show/' + article.id
+
+
+getStyle = (type) ->
+  typeMapping = {
+    'tip'      : 'icon-star',
+    'document' : 'icon-font',
+    'book'     : 'icon-book',
+    'video'    : 'icon-film',
+    'audio'    : 'icon-music'
+  }
+  typeMapping[type]

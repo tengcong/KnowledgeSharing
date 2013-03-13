@@ -1,13 +1,16 @@
 <div class='row'>
   <div class='span9 articles'>
-    <div class="cell" ng-repeat='article in articles | tagsFilter: query.commands'>
+    <div class="cell" ng-repeat='article in articles | maxFilter: query.commands'>
       <div class="article">
-        <a class='title' href="#/show/{{article.id}}">{{article.title}}</a>
+        <a class='title' href="#/show/{{article.id}}">
+          {{article.title}}
+        </a>
+        <i class='{{getStyle(article.article_type)}} pull-right'></i>
       </div>
       <div class="tags">
         <ul class="nav nav-pills">
           <li ng-repeat='tag in article.tags'>
-          <a href="#">{{tag.name}}</a>
+          <a ng-click='addToQuery(tag.name)'>{{tag.name}}</a>
           </li>
         </ul>
       </div>
