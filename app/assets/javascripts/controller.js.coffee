@@ -28,7 +28,7 @@ CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
 
     $scope.getShow = (id) ->
       if $('#ars').length != 0 && id != undefined
-        article_ids = $('#ars').data('docs').split(', ')
+        article_ids = $('#ars').data('docs').toString().split(', ')
         if _.contains(article_ids, id.toString())
           "manage-show"
         else
