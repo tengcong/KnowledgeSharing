@@ -7,6 +7,7 @@
 //= require_tree .
 
 var commandLine = $('#command-line');
+
 commandLine.focus();
 highlight(commandLine);
 
@@ -47,7 +48,8 @@ commandLine.bind('keydown', function(env){
   //   // window.location = $('a.title')[pageNum];
   // }
   if (env.which === 38) {
-    alert('up');
+    var list = $('a.title');
+    console.log(list);
 
   } else if (env.which === 40) {
     alert('down');
