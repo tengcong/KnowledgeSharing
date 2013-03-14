@@ -5,9 +5,9 @@ module.filter 'maxFilter', ->
       commands = removeSfxSpace(removePreSpace(query)).split('|')
       _.each commands, (command) ->
         command = removeSfxSpace removePreSpace(command)
-        if /\s*tags\s*:/.test command
+        if cateReg('tags').test(command) || cateReg('#').test(command)
           articles = matchTags(articles, command)
-        else if /\s*type\s*:/.test command
+        else if cateReg('type').test(command) || cateReg('&').test(command)
           articles = matchType(articles, command)
         else
           articles = defaultMatch(articles, command)
@@ -18,7 +18,8 @@ module.filter 'maxFilter', ->
 matchTags = (articles, query) ->
   _.filter articles, (article)->
 
-    query = query.replace /\s*tags\s*:\s*/, ''
+    query = removeCate(query, 'tags')
+    query = removeCate(query, '#')
     query = removeSfxComma query
 
     _.every query.split(','), (term)->
@@ -34,7 +35,8 @@ matchTags = (articles, query) ->
 
 matchType = (articles, query) ->
   _.filter articles, (article) ->
-    query = query.replace /\s*type\s*:\s*/, ''
+    query = removeCate(query, 'type')
+    query = removeCate(query, '&')
     query = removeSfxComma query
     patt = new RegExp(query, 'i')
     patt.test article.article_type
@@ -53,3 +55,10 @@ removeSfxSpace = (origin)->
 
 removeSfxComma = (origin) ->
   origin.replace /\s*,*\s*$/, ''
+
+cateReg = (cate)->
+  new RegExp('\\s*' + cate + '\\s*:')
+
+removeCate = (query, cate) ->
+  patt = new RegExp('\\s*' + cate + '\\s*:\\s*')
+  query.replace patt, ''
