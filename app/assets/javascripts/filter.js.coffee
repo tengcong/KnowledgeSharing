@@ -9,6 +9,8 @@ module.filter 'maxFilter', ->
           articles = matchTags(articles, command)
         else if cateReg('type').test(command) || cateReg('&').test(command)
           articles = matchType(articles, command)
+        else if cateReg('user').test(command) || cateReg('@').test(command)
+          articles = matchUser(articles, command)
         else
           articles = defaultMatch(articles, command)
       articles
@@ -40,6 +42,14 @@ matchType = (articles, query) ->
     query = removeSfxComma query
     patt = new RegExp(query, 'i')
     patt.test article.article_type
+
+matchUser = (articles, query) ->
+  _.filter articles, (article) ->
+    query = removeCate(query, 'user')
+    query = removeCate(query, '@')
+    query = removeSfxComma query
+    patt = new RegExp(query, 'i')
+    patt.test article.user.email
 
 defaultMatch = (articles, query) ->
   _.filter articles, (article) ->

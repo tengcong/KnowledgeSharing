@@ -38,7 +38,7 @@ class Article < ActiveRecord::Base
       :article_type => self.article_type,
       :content => self.content,
       :tags => self.tags.map{|t| t.name}.join(', '),
-      :user_id => self.user.id
+      :user_email => self.user.email
     }
   end
 end

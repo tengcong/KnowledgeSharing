@@ -5,3 +5,6 @@ attributes :title, :article_type, :id
 child(:tags) do
   attributes :name
 end
+child(:user) do
+  attributes :email
+end
