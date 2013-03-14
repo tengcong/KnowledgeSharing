@@ -24,8 +24,8 @@
       </div>
     </div>
     <div class="control-group">
-      <div class="controls">
-        <input type="text" ng-model='article.tags' class='span6' placeholder="tags ... please use ', ' to isolate" required></input>
+      <div class="controls dropdown">
+        <input type="text" ng-model='article.tags' class='span6' placeholder="use 3d tags" typeahead="tag.name for tag in tags | filter: $viewValue" required></input>
       </div>
     </div>
     <div class="control-group">

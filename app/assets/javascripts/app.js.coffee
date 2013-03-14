@@ -1,4 +1,4 @@
-module = angular.module('knowledgeSharing', ['ArticlesServices', 'ArticlesFilters'])
+module = angular.module('knowledgeSharing', ['ui.bootstrap.typeahead', 'ArticlesServices', 'ArticlesFilters'])
 
 module.config ["$httpProvider", (provider) ->
   provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
