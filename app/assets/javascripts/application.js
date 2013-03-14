@@ -21,7 +21,8 @@ function highlight(obj){
   obj.animate({
     width: '600px',
     opacity: 0.8,
-    height: '40px'
+    height: '40px',
+    'border-radius': '50px'
   }, 500)
 }
 
