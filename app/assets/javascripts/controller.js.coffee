@@ -16,9 +16,9 @@ ListCtrl.$inject = ['$scope', 'Article', 'Tag']
 
     $scope.save = ->
       if($scope.articleForm.$valid)
-        $scope.article.tags = $viewValue
+        $scope.article.tags = $('#tags').val()
         Article.save $scope.article, (article)->
-          $location.path '/'
+        $location.path '/'
 
 CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
 
