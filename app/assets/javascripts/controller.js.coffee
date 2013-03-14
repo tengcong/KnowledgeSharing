@@ -4,7 +4,7 @@
     $scope.tags = Tag.index()
 
     $scope.addToQuery =  (cate, name)->
-      $scope.query.commands += ' | ' + cate + ': ' + name
+      $scope.command.query += ' | ' + cate + ': ' + name
 
     $scope.getStyle = getStyle
 ListCtrl.$inject = ['$scope', 'Article', 'Tag']
@@ -39,7 +39,7 @@ CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
     $scope.getStyle = getStyle
 
     $scope.getSameType = (type)->
-      $scope.query.commands = 'type: ' + type
+      $scope.command.query = 'type: ' + type
       $location.path '/'
 
     $scope.remove = ()->
