@@ -23,7 +23,6 @@
 # /config/settings.yml
 /.sass-cache
 /public/uploads/
-/public/assets/
 chromedriver.log
 /vendor/bundle/
 /*.sh
