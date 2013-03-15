@@ -43,6 +43,7 @@ commandLine.bind('keydown', function(env){
     var selector = list.get(cursor);
     recoverAllBackColor(list)
     setBackColor(selector);
+    selector.scrollIntoView();
 
   } else if (env.which === 40) {
     var list = $('a.title');
@@ -50,6 +51,7 @@ commandLine.bind('keydown', function(env){
     var selector = list.get(cursor);
     recoverAllBackColor(list);
     setBackColor(selector);
+    selector.scrollIntoView();
 
   } else if (env.which === 27){
     var list = $('a.title');
