@@ -32,6 +32,10 @@ group :development do
   gem 'better_errors'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
