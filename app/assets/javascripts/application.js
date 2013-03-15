@@ -6,16 +6,18 @@
 //= require underscore
 //= require_tree .
 
-var commandLine = $('#command-line');
+function commandLine(){
+  return $('#command-line');
+}
 
-commandLine.focus();
-highlight(commandLine);
+commandLine().focus();
+highlight(commandLine());
 
-commandLine.focus(function(){
-  highlight(commandLine);
+commandLine().focus(function(){
+  highlight(commandLine());
 })
-commandLine.blur(function(){
-  recover(commandLine);
+commandLine().blur(function(){
+  recover(commandLine());
 })
 
 function highlight(obj){
@@ -36,7 +38,10 @@ function recover(obj){
 }
 
 var cursor = -1;
-commandLine.bind('keydown', function(env){
+
+commandLine().bind('keydown', function(env){
+
+
   if (env.which === 38) {
     var list = $('a.title');
     cursor = getPre(cursor >= (list.length) ? (list.length) : cursor, list.length);
@@ -56,21 +61,22 @@ commandLine.bind('keydown', function(env){
   } else if (env.which === 27){
     var list = $('a.title');
     cursor = -1;
-
     recoverAllBackColor(list)
+
   }else if(env.which === 13){
     var list = $('a.title');
     var selector = list.get(cursor);
     if(list && selector){
       var path = $(selector).attr('href');
-      commandLine.val('');
+      clearCommandLine();
       window.location = path;
     }
-    var command = commandLine.val();
-    if(command === 'home'){
+
+    if(commandLine().val() === 'home'){
+      clearCommandLine();
       window.location = '/';
-    }else if(command === 'share'){
-      commandLine.val('');
+    }else if(commandLine().val() === 'share'){
+      clearCommandLine();
       window.location = '/#sharing';
     }
   }
@@ -97,4 +103,8 @@ function recoverAllBackColor(list){
 }
 function setBackColor(selector){
   $(selector).parents('.cell').css('background-color', '#D5F3F5');
+}
+function clearCommandLine(){
+  angular.element(commandLine()[0]).scope().command.query = '';
+  commandLine().val('');
 }

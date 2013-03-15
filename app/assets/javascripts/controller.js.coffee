@@ -7,7 +7,7 @@
       $scope.command.query += ' | ' + cate + ': ' + name
 
     $scope.getStyle = getStyle
-ListCtrl.$inject = ['$scope', 'Article', 'Tag']
+@ListCtrl.$inject = ['$scope', 'Article', 'Tag']
 
 @CreateCtrl =
   ($scope, $location, Article, Tag) ->
@@ -18,9 +18,10 @@ ListCtrl.$inject = ['$scope', 'Article', 'Tag']
       if($scope.articleForm.$valid)
         $scope.article.tags = $('#tags').val()
         Article.save $scope.article, (article)->
-        $location.path '/'
+          $scope.command.query = ''
+          $location.path '/'
 
-CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
+@CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
 
 @ShowCtrl =
   ($scope, $routeParams, $location, Article) ->
@@ -48,7 +49,7 @@ CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
           if(data.success)
             $location.path '/'
 
-ShowCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article']
+@ShowCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article']
 
 @EditCtrl =
   ($scope, $routeParams, $location, Article, Tag) ->
@@ -57,12 +58,12 @@ ShowCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article']
     $scope.tags = Tag.index()
     $scope.save = ->
       if($scope.articleForm.$valid)
-        $scope.article.tags = $viewValue
+        $scope.article.tags = $('#tags').val()
         $scope.article.$update {id: articleId}, (article)->
           $location.path '/show/' + article.id
 
 
-EditCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article', 'Tag']
+@EditCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article', 'Tag']
 
 getStyle = (type) ->
   typeMapping = {
