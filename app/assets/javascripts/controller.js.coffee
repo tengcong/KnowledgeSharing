@@ -18,8 +18,7 @@
       if($scope.articleForm.$valid)
         $scope.article.tags = $('#tags').val()
         Article.save $scope.article, (article)->
-          $scope.command.query = ''
-          $location.path '/'
+          window.location = '/'
 
 @CreateCtrl.$inject = ['$scope', '$location', 'Article', 'Tag']
 
@@ -60,7 +59,7 @@
       if($scope.articleForm.$valid)
         $scope.article.tags = $('#tags').val()
         $scope.article.$update {id: articleId}, (article)->
-          $location.path '/show/' + article.id
+          window.location = '/'
 
 
 @EditCtrl.$inject = ['$scope', '$routeParams', '$location', 'Article', 'Tag']
