@@ -4,7 +4,7 @@ gem 'rails'
 gem 'mysql2'
 
 group :assets do
-  gem 'sass-rails'
+  gem 'compass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
